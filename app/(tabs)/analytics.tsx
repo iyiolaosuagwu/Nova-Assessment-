@@ -6,6 +6,7 @@ import Header from "@/components/common/Header";
 import LoadMoreButton from "@/components/common/LoadMoreButton";
 import SectionHeader from "@/components/common/SectionHeader";
 import PeriodFilter from "@/components/inputs/PeriodFilter";
+import CustomSvgIcon from "@/components/ui/CustomSvgIcon";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import {
     selectCategoryChartData,
@@ -103,8 +104,8 @@ export default function AnalyticsScreen() {
                         <Text style={analyticsStyles.yearText}>
                             This Year ({selectedYear})
                         </Text>
-                        <IconSymbol
-                            name="chevron.down"
+                        <CustomSvgIcon
+                            name="arrowDown"
                             size={16}
                             color="#666"
                         />
