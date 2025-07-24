@@ -754,4 +754,15 @@ export const homeStyles = StyleSheet.create({
         fontSize: 12,
         color: "#666",
     },
+    amountContainer: {
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 4,
+    },
+    nairaSymbol: {
+        fontSize: 24,
+        fontWeight: "bold",
+        color: "#fff",
+        alignSelf: "flex-start",
+    },
 });

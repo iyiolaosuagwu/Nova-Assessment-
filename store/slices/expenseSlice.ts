@@ -104,7 +104,7 @@ const initialState: ExpenseState = {
         {
             id: 1,
             title: "Today spend (Mon, 15 Apr)",
-            amount: "₦12,000",
+            amount: "12,000",
             comparison: "47% below than last yesterday",
             trend: "down",
             trendColor: "#27AE60",
@@ -112,7 +112,7 @@ const initialState: ExpenseState = {
         {
             id: 2,
             title: "This Week (Apr 10-16)",
-            amount: "₦85,000",
+            amount: "85,000",
             comparison: "12% above than last week",
             trend: "up",
             trendColor: "#E74C3C",
@@ -120,7 +120,7 @@ const initialState: ExpenseState = {
         {
             id: 3,
             title: "This Month (April 2024)",
-            amount: "₦340,000",
+            amount: "340,000",
             comparison: "8% below than last month",
             trend: "down",
             trendColor: "#27AE60",
