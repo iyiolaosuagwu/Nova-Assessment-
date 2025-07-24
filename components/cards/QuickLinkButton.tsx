@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { IconSymbol } from "../ui/IconSymbol";
-import { cardStyles } from "./styles";
+import { quickLinkButtonStyles } from "./styles";
 
 interface QuickLinkButtonProps {
     icon: any;
@@ -16,11 +16,14 @@ const QuickLinkButton: React.FC<QuickLinkButtonProps> = ({
     label,
     onPress,
 }) => (
-    <TouchableOpacity style={cardStyles.quickLinkButton} onPress={onPress}>
-        <View style={cardStyles.quickLinkIcon}>
+    <TouchableOpacity
+        style={quickLinkButtonStyles.quickLinkButton}
+        onPress={onPress}
+    >
+        <View style={quickLinkButtonStyles.quickLinkIcon}>
             <IconSymbol name={icon} size={24} color={iconColor} />
         </View>
-        <Text style={cardStyles.quickLinkText}>{label}</Text>
+        <Text style={quickLinkButtonStyles.quickLinkText}>{label}</Text>
     </TouchableOpacity>
 );
 

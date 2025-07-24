@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
-import { inputStyles } from "./styles";
+import { periodFilterStyles } from "./styles";
 
 interface PeriodFilterProps {
     periods: string[];
@@ -13,21 +13,22 @@ const PeriodFilter: React.FC<PeriodFilterProps> = ({
     selectedPeriod,
     onSelect,
 }) => (
-    <View style={inputStyles.periodFilter}>
+    <View style={periodFilterStyles.periodFilter}>
         {periods.map((period) => (
             <TouchableOpacity
                 key={period}
                 style={[
-                    inputStyles.periodButton,
-                    selectedPeriod === period && inputStyles.activePeriodButton,
+                    periodFilterStyles.periodButton,
+                    selectedPeriod === period &&
+                        periodFilterStyles.activePeriodButton,
                 ]}
                 onPress={() => onSelect(period)}
             >
                 <Text
                     style={[
-                        inputStyles.periodText,
+                        periodFilterStyles.periodText,
                         selectedPeriod === period &&
-                            inputStyles.activePeriodText,
+                            periodFilterStyles.activePeriodText,
                     ]}
                 >
                     {period}

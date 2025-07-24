@@ -1,7 +1,6 @@
 import { StyleSheet } from "react-native";
 
-export const inputStyles = StyleSheet.create({
-    // AmountInput
+export const amountInputStyles = StyleSheet.create({
     amountRow: {
         flexDirection: "row",
         alignItems: "center",
@@ -18,7 +17,9 @@ export const inputStyles = StyleSheet.create({
         fontSize: 32,
         fontWeight: "bold",
     },
-    // DateInput
+});
+
+export const dateInputStyles = StyleSheet.create({
     dateInput: {
         flexDirection: "row",
         justifyContent: "space-between",
@@ -34,7 +35,9 @@ export const inputStyles = StyleSheet.create({
         fontSize: 16,
         color: "#333",
     },
-    // PeriodFilter
+});
+
+export const periodFilterStyles = StyleSheet.create({
     periodFilter: {
         flexDirection: "row",
         marginBottom: 30,

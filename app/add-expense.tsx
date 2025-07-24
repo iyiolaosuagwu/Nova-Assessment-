@@ -19,7 +19,7 @@ import {
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { updateCategorySpending } from "../store/slices/categorySlice";
 import { addExpense } from "../store/slices/expenseSlice";
-import { addExpenseStyles } from "./styles";
+import { addExpenseStyles } from "./(tabs)/styles";
 
 const { height: screenHeight } = Dimensions.get("window");
 
@@ -264,56 +264,52 @@ export default function AddExpenseScreen() {
                             style={addExpenseStyles.categoryList}
                             showsVerticalScrollIndicator={false}
                         >
-                            {categories.map((cat) => {
-                                console.log(cat, "cat");
-                                return (
-                                    <TouchableOpacity
-                                        key={cat.id}
-                                        style={addExpenseStyles.categoryItem}
-                                        onPress={() =>
-                                            handleCategorySelect(
-                                                cat.name,
-                                                cat.icon,
-                                                cat.color
-                                            )
+                            {categories.map((cat) => (
+                                <TouchableOpacity
+                                    key={cat.id}
+                                    style={addExpenseStyles.categoryItem}
+                                    onPress={() =>
+                                        handleCategorySelect(
+                                            cat.name,
+                                            cat.icon,
+                                            cat.color
+                                        )
+                                    }
+                                >
+                                    <View
+                                        style={
+                                            addExpenseStyles.categoryItemContent
                                         }
                                     >
                                         <View
+                                            style={[
+                                                addExpenseStyles.categoryIcon,
+                                                {
+                                                    backgroundColor: cat.color,
+                                                },
+                                            ]}
+                                        >
+                                            <CustomSvgIcon
+                                                name={cat.icon as any}
+                                                size={20}
+                                                color="white"
+                                            />
+                                        </View>
+                                        <Text
                                             style={
-                                                addExpenseStyles.categoryItemContent
+                                                addExpenseStyles.categoryName
                                             }
                                         >
-                                            <View
-                                                style={[
-                                                    addExpenseStyles.categoryIcon,
-                                                    {
-                                                        backgroundColor:
-                                                            cat.color,
-                                                    },
-                                                ]}
-                                            >
-                                                <CustomSvgIcon
-                                                    name={cat.icon as any}
-                                                    size={20}
-                                                    color="white"
-                                                />
-                                            </View>
-                                            <Text
-                                                style={
-                                                    addExpenseStyles.categoryName
-                                                }
-                                            >
-                                                {cat.name}
-                                            </Text>
-                                        </View>
-                                        <IconSymbol
-                                            name="chevron.right"
-                                            size={16}
-                                            color="#999"
-                                        />
-                                    </TouchableOpacity>
-                                );
-                            })}
+                                            {cat.name}
+                                        </Text>
+                                    </View>
+                                    <IconSymbol
+                                        name="chevron.right"
+                                        size={16}
+                                        color="#999"
+                                    />
+                                </TouchableOpacity>
+                            ))}
                         </ScrollView>
                     </View>
                 </View>

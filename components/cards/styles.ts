@@ -1,7 +1,6 @@
 import { StyleSheet } from "react-native";
 
-export const cardStyles = StyleSheet.create({
-    // SpendingCard
+export const spendingCardStyles = StyleSheet.create({
     spendingCard: {
         backgroundColor: "#101828",
         borderRadius: 15,
@@ -29,7 +28,9 @@ export const cardStyles = StyleSheet.create({
         fontSize: 14,
         marginLeft: 8,
     },
-    // StatCard
+});
+
+export const statCardStyles = StyleSheet.create({
     statCard: {
         backgroundColor: "white",
         borderRadius: 12,
@@ -60,10 +61,11 @@ export const cardStyles = StyleSheet.create({
         fontSize: 12,
         color: "#999",
     },
-    // CategoryCard
+});
+
+export const categoryCardStyles = StyleSheet.create({
     categoryCard: {
         backgroundColor: "white",
-        // borderRadius: 12,
         borderTopRightRadius: 10,
         borderBottomRightRadius: 10,
         borderTopLeftRadius: 10,
@@ -99,7 +101,9 @@ export const cardStyles = StyleSheet.create({
         fontSize: 10,
         color: "#999",
     },
-    // TransactionItem
+});
+
+export const transactionCardStyles = StyleSheet.create({
     transactionItem: {
         flexDirection: "row",
         alignItems: "center",
@@ -148,7 +152,9 @@ export const cardStyles = StyleSheet.create({
         color: "#333",
         marginBottom: 2,
     },
-    // QuickLinkButton
+});
+
+export const quickLinkButtonStyles = StyleSheet.create({
     quickLinkButton: {
         borderWidth: 1,
         borderColor: "#eee",
@@ -170,7 +176,9 @@ export const cardStyles = StyleSheet.create({
         fontSize: 14,
         color: "#005EE8",
     },
-    // AnalyticsPieChart (legend only)
+});
+
+export const analyticsPieChartStyles = StyleSheet.create({
     legendContainer: {
         width: "100%",
     },

@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, View } from "react-native";
-import { commonStyles } from "./styles";
+import { sectionHeaderStyles } from "./styles";
 
 interface SectionHeaderProps {
     title: string;
@@ -15,8 +15,8 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
     onActionPress,
     children,
 }) => (
-    <View style={commonStyles.sectionHeader}>
-        <Text style={commonStyles.sectionTitle}>{title}</Text>
+    <View style={sectionHeaderStyles.sectionHeader}>
+        <Text style={sectionHeaderStyles.sectionTitle}>{title}</Text>
         {children}
     </View>
 );
