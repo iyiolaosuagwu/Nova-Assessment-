@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { PieChart } from "react-native-gifted-charts";
 import LegendDot from "../ui/LegendDot";
-import { cardStyles } from "./styles";
+import { analyticsPieChartStyles } from "./styles";
 
 interface ChartDataItem {
     category: string;
@@ -53,22 +53,31 @@ function AnalyticsPieChart({
                 ) : null}
             </View>
             {data.length > 0 && (
-                <View style={cardStyles.legendContainer}>
+                <View style={analyticsPieChartStyles.legendContainer}>
                     {legendPairs.map((pair, pairIndex) => (
-                        <View key={pairIndex} style={cardStyles.legendRow}>
+                        <View
+                            key={pairIndex}
+                            style={analyticsPieChartStyles.legendRow}
+                        >
                             {pair.map((item, itemIndex) => (
                                 <View
                                     key={itemIndex}
-                                    style={cardStyles.legendItem}
+                                    style={analyticsPieChartStyles.legendItem}
                                 >
                                     <LegendDot color={item.color} />
-                                    <Text style={cardStyles.legendText}>
+                                    <Text
+                                        style={
+                                            analyticsPieChartStyles.legendText
+                                        }
+                                    >
                                         {item.category}
                                     </Text>
                                 </View>
                             ))}
                             {pair.length === 1 && (
-                                <View style={cardStyles.legendItem} />
+                                <View
+                                    style={analyticsPieChartStyles.legendItem}
+                                />
                             )}
                         </View>
                     ))}

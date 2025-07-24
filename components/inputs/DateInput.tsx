@@ -4,7 +4,7 @@ import DateTimePicker, {
 import React, { useState } from "react";
 import { Platform, Text, TouchableOpacity } from "react-native";
 import CustomSvgIcon from "../ui/CustomSvgIcon";
-import { inputStyles } from "./styles";
+import { dateInputStyles } from "./styles";
 
 interface DateInputProps {
     value: string;
@@ -41,10 +41,10 @@ const DateInput: React.FC<DateInputProps> = ({
     return (
         <>
             <TouchableOpacity
-                style={inputStyles.dateInput}
+                style={dateInputStyles.dateInput}
                 onPress={() => setShow(true)}
             >
-                <Text style={inputStyles.dateText}>
+                <Text style={dateInputStyles.dateText}>
                     {displayValue || placeholder}
                 </Text>
                 <CustomSvgIcon name="date" size={16} color="#666" />

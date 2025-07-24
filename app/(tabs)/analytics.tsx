@@ -23,7 +23,7 @@ import {
     View,
 } from "react-native";
 import { useAppSelector } from "../../store/hooks";
-import { analyticsStyles } from "../styles";
+import { analyticsStyles } from "./styles";
 
 export default function AnalyticsScreen() {
     const currentYear = new Date().getFullYear();

@@ -6,7 +6,7 @@ import {
     TouchableOpacity,
     ViewStyle,
 } from "react-native";
-import { commonStyles } from "./styles";
+import { buttonStyles } from "./styles";
 
 export type ButtonVariant = "primary" | "secondary" | "outline" | "danger";
 
@@ -73,9 +73,9 @@ const Button: React.FC<ButtonProps> = ({
     return (
         <TouchableOpacity
             style={[
-                commonStyles.button,
+                buttonStyles.button,
                 v.button,
-                disabled && commonStyles.disabled,
+                disabled && buttonStyles.disabled,
                 style,
             ]}
             onPress={onPress}
@@ -85,7 +85,7 @@ const Button: React.FC<ButtonProps> = ({
             {loading ? (
                 <ActivityIndicator color={v.text.color} />
             ) : (
-                <Text style={[commonStyles.text, v.text, textStyle]}>
+                <Text style={[buttonStyles.text, v.text, textStyle]}>
                     {children}
                 </Text>
             )}

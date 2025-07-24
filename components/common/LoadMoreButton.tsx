@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, TouchableOpacity } from "react-native";
-import { commonStyles } from "./styles";
+import { loadMoreButtonStyles } from "./styles";
 
 interface LoadMoreButtonProps {
     label: string;
@@ -8,8 +8,11 @@ interface LoadMoreButtonProps {
 }
 
 const LoadMoreButton: React.FC<LoadMoreButtonProps> = ({ label, onPress }) => (
-    <TouchableOpacity style={commonStyles.loadMoreButton} onPress={onPress}>
-        <Text style={commonStyles.loadMoreText}>{label}</Text>
+    <TouchableOpacity
+        style={loadMoreButtonStyles.loadMoreButton}
+        onPress={onPress}
+    >
+        <Text style={loadMoreButtonStyles.loadMoreText}>{label}</Text>
     </TouchableOpacity>
 );
 

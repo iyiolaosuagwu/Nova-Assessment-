@@ -1,7 +1,7 @@
 import { Dimensions, StyleSheet } from "react-native";
+const { width: screenWidth } = Dimensions.get("window");
 
 const { height: screenHeight } = Dimensions.get("window");
-const { width: screenWidth } = Dimensions.get("window");
 
 export const addExpenseStyles = StyleSheet.create({
     container: {

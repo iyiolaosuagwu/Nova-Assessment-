@@ -17,7 +17,7 @@ import {
     View,
 } from "react-native";
 import { useAppSelector } from "../../store/hooks";
-import { homeStyles } from "../styles";
+import { homeStyles } from "./styles";
 
 const { width: screenWidth } = Dimensions.get("window");
 const cardWidth = screenWidth - 40;

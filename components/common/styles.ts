@@ -1,7 +1,6 @@
 import { StyleSheet } from "react-native";
 
-export const commonStyles = StyleSheet.create({
-    // Button
+export const buttonStyles = StyleSheet.create({
     button: {
         borderRadius: 10,
         padding: 15,
@@ -16,7 +15,9 @@ export const commonStyles = StyleSheet.create({
     disabled: {
         opacity: 0.5,
     },
-    // Header
+});
+
+export const headerStyles = StyleSheet.create({
     header: {
         flexDirection: "row",
         justifyContent: "space-between",
@@ -39,7 +40,9 @@ export const commonStyles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
     },
-    // SectionHeader
+});
+
+export const sectionHeaderStyles = StyleSheet.create({
     sectionHeader: {
         flexDirection: "row",
         justifyContent: "space-between",
@@ -62,7 +65,9 @@ export const commonStyles = StyleSheet.create({
         color: "#005EE8",
         marginLeft: 5,
     },
-    // EmptyState
+});
+
+export const emptyStateStyles = StyleSheet.create({
     emptyContainer: {
         alignItems: "center",
         paddingVertical: 40,
@@ -77,7 +82,9 @@ export const commonStyles = StyleSheet.create({
         fontSize: 14,
         color: "#999",
     },
-    // LoadMoreButton
+});
+
+export const loadMoreButtonStyles = StyleSheet.create({
     loadMoreButton: {
         backgroundColor: "white",
         borderRadius: 12,

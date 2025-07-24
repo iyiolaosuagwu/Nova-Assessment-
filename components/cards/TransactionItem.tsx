@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, View } from "react-native";
-import { cardStyles } from "./styles";
+import { transactionCardStyles } from "./styles";
 
 interface TransactionItemProps {
     icon: any;
@@ -19,17 +19,30 @@ const TransactionItem: React.FC<TransactionItemProps> = ({
     amount,
     date,
 }) => (
-    <View style={cardStyles.transactionItem}>
+    <View style={transactionCardStyles.transactionItem}>
         <View
-            style={[cardStyles.transactionIcon, { backgroundColor: iconColor }]}
+            style={[
+                transactionCardStyles.transactionIcon,
+                { backgroundColor: iconColor },
+            ]}
         ></View>
-        <View style={cardStyles.transactionDetails}>
-            <Text style={cardStyles.transactionTitle}>{description}</Text>
-            <Text style={cardStyles.transactionCategory}>{category}</Text>
+        <View style={transactionCardStyles.transactionDetails}>
+            <Text style={transactionCardStyles.transactionTitle}>
+                {description}
+            </Text>
+            <Text style={transactionCardStyles.transactionCategory}>
+                {category}
+            </Text>
         </View>
-        <View style={cardStyles.transactionAmount}>
-            <Text style={cardStyles.transactionAmountText}>{amount}</Text>
-            {date && <Text style={cardStyles.transactionDate}>{date}</Text>}
+        <View style={transactionCardStyles.transactionAmount}>
+            <Text style={transactionCardStyles.transactionAmountText}>
+                {amount}
+            </Text>
+            {date && (
+                <Text style={transactionCardStyles.transactionDate}>
+                    {date}
+                </Text>
+            )}
         </View>
     </View>
 );

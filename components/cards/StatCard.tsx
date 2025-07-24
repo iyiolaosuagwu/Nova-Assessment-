@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, View } from "react-native";
-import { cardStyles } from "./styles";
+import { statCardStyles } from "./styles";
 
 interface StatCardProps {
     title: string;
@@ -9,10 +9,10 @@ interface StatCardProps {
 }
 
 const StatCard: React.FC<StatCardProps> = ({ title, amount, subtext }) => (
-    <View style={cardStyles.statCard}>
-        <Text style={cardStyles.statTitle}>{title}</Text>
-        <Text style={cardStyles.statAmount}>{amount}</Text>
-        {subtext && <Text style={cardStyles.statSubtext}>{subtext}</Text>}
+    <View style={statCardStyles.statCard}>
+        <Text style={statCardStyles.statTitle}>{title}</Text>
+        <Text style={statCardStyles.statAmount}>{amount}</Text>
+        {subtext && <Text style={statCardStyles.statSubtext}>{subtext}</Text>}
     </View>
 );
 

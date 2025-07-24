@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View } from "react-native";
 import { IconSymbol } from "../ui/IconSymbol";
-import { commonStyles } from "./styles";
+import { emptyStateStyles } from "./styles";
 
 interface EmptyStateProps {
     icon: any;
@@ -19,11 +19,11 @@ function EmptyState({
     subtitle,
 }: EmptyStateProps) {
     return (
-        <View style={commonStyles.emptyContainer}>
+        <View style={emptyStateStyles.emptyContainer}>
             <IconSymbol name={icon} size={iconSize} color={iconColor} />
-            <Text style={commonStyles.emptyTitle}>{title}</Text>
+            <Text style={emptyStateStyles.emptyTitle}>{title}</Text>
             {subtitle && (
-                <Text style={commonStyles.emptySubtitle}>{subtitle}</Text>
+                <Text style={emptyStateStyles.emptySubtitle}>{subtitle}</Text>
             )}
         </View>
     );
