@@ -44,7 +44,7 @@ export const commonStyles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        marginBottom: 15,
+        marginBottom: 25,
     },
     sectionTitle: {
         fontSize: 18,

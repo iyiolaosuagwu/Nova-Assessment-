@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Text, View } from "react-native";
 import { commonStyles } from "./styles";
 
 interface SectionHeaderProps {
@@ -17,15 +17,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
 }) => (
     <View style={commonStyles.sectionHeader}>
         <Text style={commonStyles.sectionTitle}>{title}</Text>
-        {actionLabel && onActionPress && (
-            <TouchableOpacity
-                style={commonStyles.actionButton}
-                onPress={onActionPress}
-            >
-                {children}
-                <Text style={commonStyles.actionButtonText}>{actionLabel}</Text>
-            </TouchableOpacity>
-        )}
+        {children}
     </View>
 );
 

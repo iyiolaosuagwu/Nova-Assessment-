@@ -265,6 +265,11 @@ export const analyticsStyles = StyleSheet.create({
     yearSelector: {
         flexDirection: "row",
         alignItems: "center",
+        borderWidth: 1,
+        borderColor: "#EAECF0",
+        borderRadius: 10,
+        paddingHorizontal: 10,
+        paddingVertical: 10,
     },
     yearText: {
         fontSize: 16,
