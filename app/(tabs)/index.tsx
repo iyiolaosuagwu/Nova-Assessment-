@@ -1,75 +1,171 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import SpendingCard from "@/components/cards/SpendingCard";
+import TransactionList from "@/components/cards/TransactionList";
+import Header from "@/components/common/Header";
+import AddCategoryIcon from "@/icons/AddCategoryIcon";
+import AddExpenseIcon from "@/icons/AddExpenseIcon";
+import { useRouter } from "expo-router";
+import React, { useRef, useState } from "react";
+import {
+    Dimensions,
+    NativeScrollEvent,
+    NativeSyntheticEvent,
+    SafeAreaView,
+    ScrollView,
+    StatusBar,
+    Text,
+    TouchableOpacity,
+    View,
+} from "react-native";
+import { useAppSelector } from "../../store/hooks";
+import { homeStyles } from "../styles";
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+const { width: screenWidth } = Dimensions.get("window");
+const cardWidth = screenWidth - 40;
 
 export default function HomeScreen() {
-  return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
-  );
-}
+    const [activeSlide, setActiveSlide] = useState(0);
+    const scrollViewRef = useRef<ScrollView>(null);
 
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});
+    const router = useRouter();
+
+    const handleAddExpense = () => {
+        router.push("/add-expense");
+    };
+
+    // Get data from Redux store
+    const { expenses, spendingPeriods } = useAppSelector(
+        (state) => state.expenses
+    );
+
+    // Get recent transactions (last 5)
+    const recentTransactions = expenses.slice(0, 5);
+
+    const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+        const slideSize = cardWidth;
+        const index = Math.round(event.nativeEvent.contentOffset.x / slideSize);
+        setActiveSlide(index);
+    };
+
+    const goToSlide = (index: number) => {
+        setActiveSlide(index);
+        scrollViewRef.current?.scrollTo({
+            x: index * cardWidth,
+            animated: true,
+        });
+    };
+
+    const formatAmount = (amount: number) => {
+        return `₦${amount.toLocaleString()}`;
+    };
+
+    const formatDate = (dateString: string) => {
+        const date = new Date(dateString);
+        return date.toLocaleDateString("en-US", {
+            weekday: "short",
+            day: "numeric",
+            month: "short",
+        });
+    };
+
+    return (
+        <SafeAreaView style={homeStyles.container}>
+            <StatusBar barStyle="dark-content" backgroundColor="#fff" />
+
+            {/* Header */}
+            <Header brandName="Techmover" />
+            <ScrollView
+                style={homeStyles.content}
+                showsVerticalScrollIndicator={false}
+            >
+                {/* Greeting Section */}
+                <View style={homeStyles.greetingSection}>
+                    <Text style={homeStyles.greeting}>Good Morning! ☀️</Text>
+                    <Text style={homeStyles.userName}>Adeola Adeyoyin</Text>
+                </View>
+
+                {/* Spending Cards Slider */}
+                <View style={homeStyles.sliderWrapper}>
+                    <ScrollView
+                        ref={scrollViewRef}
+                        horizontal
+                        pagingEnabled
+                        showsHorizontalScrollIndicator={false}
+                        onScroll={handleScroll}
+                        scrollEventThrottle={16}
+                        style={homeStyles.sliderContainer}
+                        contentContainerStyle={homeStyles.sliderContent}
+                    >
+                        {spendingPeriods.map((item, index) => (
+                            <SpendingCard
+                                key={item.id}
+                                item={item}
+                                homeStyles={homeStyles}
+                            />
+                        ))}
+                    </ScrollView>
+
+                    {/* Page Indicators */}
+                    <View style={homeStyles.pageIndicators}>
+                        {spendingPeriods.map((_, index) => (
+                            <TouchableOpacity
+                                key={index}
+                                style={[
+                                    homeStyles.indicator,
+                                    activeSlide === index &&
+                                        homeStyles.activeIndicator,
+                                ]}
+                                onPress={() => goToSlide(index)}
+                            />
+                        ))}
+                    </View>
+                </View>
+
+                {/* Quick Links */}
+                <View style={homeStyles.quickLinksSection}>
+                    <Text style={homeStyles.sectionTitle}>Quick Links</Text>
+                    <View style={homeStyles.quickLinksRow}>
+                        <TouchableOpacity
+                            onPress={handleAddExpense}
+                            style={homeStyles.quickLinkButton}
+                        >
+                            <View style={homeStyles.quickLinkIcon}>
+                                <AddExpenseIcon />
+                            </View>
+                            <Text style={homeStyles.quickLinkText}>
+                                Add Expense
+                            </Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={homeStyles.quickLinkButton}>
+                            <View style={homeStyles.quickLinkIcon}>
+                                <AddCategoryIcon />
+                            </View>
+                            <Text style={homeStyles.quickLinkText}>
+                                Create a Category
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+
+                {/* Recent Transactions */}
+                <View style={homeStyles.transactionsSection}>
+                    <View style={homeStyles.transactionHeader}>
+                        <Text style={homeStyles.sectionTitle}>
+                            Recent Transaction
+                        </Text>
+                        <TouchableOpacity>
+                            <Text style={homeStyles.viewAllText}>View All</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    {/* Transaction Items from Redux */}
+                    <TransactionList
+                        transactions={recentTransactions}
+                        homeStyles={homeStyles}
+                        formatAmount={formatAmount}
+                        formatDate={formatDate}
+                    />
+                </View>
+            </ScrollView>
+        </SafeAreaView>
+    );
+}
